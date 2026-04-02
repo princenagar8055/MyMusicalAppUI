@@ -43,7 +43,7 @@ android {
 
 dependencies {
 
-    implementation(libs.androidx.compose.navigation)
+   // implementation(libs.androidx.compose.navigation)
     val nav_version ="2.7.5"
     val compose_version ="1.6.0-alpha08"
 

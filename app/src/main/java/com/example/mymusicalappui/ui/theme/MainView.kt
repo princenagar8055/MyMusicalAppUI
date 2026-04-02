@@ -34,7 +34,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
-import androidx.wear.compose.navigation.currentBackStackEntryAsState
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.mymusicalappui.MainViewModel
 import com.example.mymusicalappui.Screen
 import com.example.mymusicalappui.screensInDrawer
@@ -68,7 +68,7 @@ fun MainView(){
 
     Scaffold(
         topBar = {
-            TopAppBar ( title = {Text("My Musical App")},
+            TopAppBar ( title = {Text(title.value)},
                 navigationIcon = { IconButton(onClick = {
                     //HERE IT WILL OPEN THE DRAWER
                     scope.launch {
@@ -138,15 +138,15 @@ fun DrawerItem(
 fun Navigation(navController: NavController, viewModel: MainViewModel,pd: PaddingValues){
 
     NavHost(navController = navController as NavHostController,
-        startDestination = Screen.DrawerScreen.AddAccount.route,
+        startDestination = Screen.DrawerScreen.Account.route,
         modifier = Modifier.padding(pd)){
 
-        composable(Screen.DrawerScreen.AddAccount.route){
-
+        composable(Screen.DrawerScreen.Account.route){
+            AccountView()
         }
 
         composable(Screen.DrawerScreen.Subscription.route){
-
+            Subscription()
         }
 
     }
