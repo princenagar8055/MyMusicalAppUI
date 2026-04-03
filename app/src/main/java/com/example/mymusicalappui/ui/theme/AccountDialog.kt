@@ -32,7 +32,7 @@ fun AccountDialog(dialogOpen: MutableState<Boolean>){
                 TextButton(onClick = {
                     dialogOpen.value= false
                 }){
-                    Text("Confirm")
+                    Text("CONFIRM")
                 }
             },
 
@@ -40,12 +40,12 @@ fun AccountDialog(dialogOpen: MutableState<Boolean>){
                 TextButton(onClick = {
                     dialogOpen.value= false
                 }){
-                    Text("dismiss")
+                    Text("DISMISS")
                 }
             },
 
             title = {
-                Text(text = "Add Account")
+                Text(text = "ENTER DATA HERE")
             },
             text = {
                 Column( modifier = Modifier.wrapContentHeight().padding(top = 16.dp),
@@ -53,18 +53,18 @@ fun AccountDialog(dialogOpen: MutableState<Boolean>){
                     TextField(value = "", onValueChange = {
 
                     }, modifier = Modifier.padding(top = 16.dp),
-                        label = {Text(text = "Email")})
+                        label = {Text(text = "EMAIL")})
                     TextField(value = "", onValueChange = {
 
                     }, modifier = Modifier.padding(top = 8.dp),
-                        label = {Text(text = "Password")})
+                        label = {Text(text = "PASSWORD")})
                 }
             },
             modifier = Modifier.fillMaxWidth()
                 .background(MaterialTheme.colors.primarySurface)
                 .padding(8.dp),
-            shape = RoundedCornerShape(5.dp),
-            backgroundColor = Color.White,
+            shape = RoundedCornerShape(10.dp),
+            backgroundColor = Color.LightGray,
             properties = DialogProperties(
                 dismissOnBackPress = true,
                 dismissOnClickOutside = true
