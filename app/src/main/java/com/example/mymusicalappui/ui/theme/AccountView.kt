@@ -40,7 +40,7 @@ fun AccountView(){
                 )
                 Column{
                     Text("Editograpgher8055")
-                    Text("@princenagar8055sof")
+                    Text("@princenagar8055sof", color = Color.Black)
 
 
                 }
