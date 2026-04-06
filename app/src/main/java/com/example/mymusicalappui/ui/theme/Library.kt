@@ -42,7 +42,7 @@ fun LibItem(lib: Lib){
                     contentDescription = lib.name)
                     Text(text =lib.name)
             }
-            Icon(imageVector = Icons.Default.KeyboardArrowRight, contentDescription = "")
+            Icon(imageVector = Icons.Default.KeyboardArrowRight, contentDescription = "ARROW RIGHT")
         }
         Divider(color = Color.LightGray)
     }

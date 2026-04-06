@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.sp
 import com.example.mymusicalappui.R   // FIXED IMPORT
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.Navigation
 import androidx.navigation.compose.*
@@ -80,9 +81,10 @@ fun MainView(){
         mutableStateOf(currentScreen.title)
     }
 
+
     val modalSheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden,
-        confirmValueChange ={it != ModalBottomSheetValue.HalfExpanded}
+        confirmValueChange = { it != ModalBottomSheetValue.HalfExpanded}
     )
 
     val roundedCornerRadius= if (isSheetFullScreen) 0.dp else 12.dp
@@ -120,20 +122,24 @@ fun MainView(){
         sheetShape = RoundedCornerShape(topStart = roundedCornerRadius, topEnd = roundedCornerRadius ),
         sheetContent = {
             MoreBottomSheet(modifier=modifier)
-        }){
+        })
+
+    {
         Scaffold(
             bottomBar = bottomBar  ,
             topBar = {
                 TopAppBar ( title = {Text(title.value)},
                     actions =  {
-                        IconButton(onClick = {
+                        IconButton(
+                            onClick = {
                             scope.launch {
                                 if(modalSheetState.isVisible)
                                     modalSheetState.hide()
                                 else
                                     modalSheetState.show()
                             }
-                        }){
+                        }
+                        ){
                             Icon(imageVector = Icons.Default.MoreVert, contentDescription = null )
                         }
                     },
@@ -168,12 +174,14 @@ fun MainView(){
                 }
             }
         ){
-            Navigation(navController = controller,viewModel= viewModel , pd= it)
-            AccountDialog(dialogOpen = dialogOpen)
+
+              Navigation (navController =controller,viewModel=viewModel,pd = it)
+              AccountDialog(dialogOpen = dialogOpen)
         }
 
     }
 }
+
 
 @Composable
 fun DrawerItem(
@@ -206,7 +214,7 @@ fun MoreBottomSheet(modifier: Modifier){
         modifier = Modifier
             .fillMaxWidth()
             .height(300.dp)
-            .background(MaterialTheme.colorScheme.surface)
+            .background(MaterialTheme.colorScheme.primary)
     ){
         Column(
             modifier = modifier.padding(16.dp),
@@ -221,5 +229,37 @@ fun MoreBottomSheet(modifier: Modifier){
                 Text(text = "Settings", fontSize = 20.sp, color = Color.White )
             }
         }
+    }
+}
+
+
+
+@Composable
+fun Navigation (navController: NavController,viewModel: MainViewModel,pd: PaddingValues){
+    NavHost(navController = navController as NavHostController,
+        startDestination = Screen.DrawerScreen.Account.route, modifier = Modifier.padding(pd)){
+
+
+        composable(Screen.BottomScreen.Home.bRoute){
+            Home()
+        }
+
+        composable(Screen.BottomScreen.Browse.bRoute){
+            Browse()
+        }
+
+        composable(Screen.BottomScreen.Library.bRoute){
+            Library()
+        }
+
+        composable(Screen.DrawerScreen.Account.route){
+            AccountView()
+        }
+
+        composable(Screen.DrawerScreen.Subscription.route){
+            Subscription()
+        }
+
+
     }
 }
