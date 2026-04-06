@@ -100,7 +100,7 @@ fun MainView(){
                     BottomNavigationItem(
                         selected = currentRoute == item.bRoute,
                         onClick = { controller.navigate(item.bRoute)
-                            title.value = item.bTitle   } ,
+                            title.value = item.bTitle   } ,       // help to change title according to the screen.
                         icon = {
                             Icon(
                                 painter = painterResource(id = item.icon),
@@ -227,6 +227,24 @@ fun MoreBottomSheet(modifier: Modifier){
                     contentDescription = "SETTINGS"
                 )
                 Text(text = "Settings", fontSize = 20.sp, color = Color.White )
+            }
+
+            Row(modifier = Modifier.padding(16.dp)){
+                Icon(
+                    modifier=Modifier.padding(end = 8.dp),
+                    painter = painterResource(id = R.drawable.ic_share),
+                    contentDescription = "SHARE"
+                )
+                Text(text = "share", fontSize = 20.sp, color = Color.White )
+            }
+
+            Row(modifier = Modifier.padding(16.dp)){
+                Icon(
+                    modifier=Modifier.padding(end = 8.dp),
+                    painter = painterResource(id = R.drawable.ic_help),
+                    contentDescription = "HELP"
+                )
+                Text(text = "help", fontSize = 20.sp, color = Color.White )
             }
         }
     }
