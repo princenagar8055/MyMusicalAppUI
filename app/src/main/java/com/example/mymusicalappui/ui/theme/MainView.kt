@@ -63,6 +63,9 @@ fun MainView(){
     val scope: CoroutineScope = rememberCoroutineScope()
     val viewModel: MainViewModel = viewModel()
     val isSheetFullScreen by remember { mutableStateOf(false) }
+  
+
+
     val modifier= if(isSheetFullScreen) Modifier.fillMaxSize() else Modifier.fillMaxWidth()
 
     val controller: NavController = rememberNavController()
@@ -281,3 +284,4 @@ fun Navigation (navController: NavController,viewModel: MainViewModel,pd: Paddin
 
     }
 }
+
